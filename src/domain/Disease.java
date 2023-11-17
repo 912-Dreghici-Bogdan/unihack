@@ -3,8 +3,14 @@ package src.domain;
 public class Disease implements Identifiable<String>{
     private String Name;
     private Restrictions restrictions;
-    protected Medicamentation medicamentation;
 
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
 
     public Restrictions getRestrictions() {
         return restrictions;

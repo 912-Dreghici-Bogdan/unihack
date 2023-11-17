@@ -3,8 +3,45 @@ package src.domain;
 public class User implements Identifiable<Integer> {
     private Integer id;
     private String email_adress;
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     private String name;
     private String lastName;
+    private Disease disease;
+    private Restrictions restrictions;
+    private Medicamentation medicamentation;
+
+    public Disease getDisease() {
+        return disease;
+    }
+
+    public void setDisease(Disease disease) {
+        this.disease = disease;
+    }
+
+    public Restrictions getRestrictions() {
+        return restrictions;
+    }
+
+    public void setRestrictions(Restrictions restrictions) {
+        this.restrictions = restrictions;
+    }
+
+    public Medicamentation getMedicamentation() {
+        return medicamentation;
+    }
+
+    public void setMedicamentation(Medicamentation medicamentation) {
+        this.medicamentation = medicamentation;
+    }
 
     public String getEmail_adress() {
         return email_adress;
