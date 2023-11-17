@@ -3,6 +3,7 @@ package src.domain;
 public class Disease implements Identifiable<String>{
     private String Name;
     private Restrictions restrictions;
+    protected Medicamentation medicamentation;
 
 
     public Restrictions getRestrictions() {
