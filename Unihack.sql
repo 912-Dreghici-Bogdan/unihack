@@ -2,7 +2,8 @@ CREATE DATABASE Timisoara
 USE Timisoara
 
 CREATE TABLE Utilizator(
-	UserName VARCHAR(50) Primary key,
+	Id INT PRIMARY KEY,
+	UserName VARCHAR(50),
 	Name VARCHAR(50),
 	LastName VARCHAR(50),
 	Email VARCHAR(50),
