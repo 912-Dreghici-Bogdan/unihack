@@ -4,7 +4,7 @@ public class User implements Identifiable<Integer> {
     private Integer id;
     private String email_adress;
     private String username;
-
+    private UserType type;
     public String getUsername() {
         return username;
     }
