@@ -6,8 +6,13 @@ import java.util.ArrayList;
 
 public class GenericMemoryRepo<T extends Identifiable> implements IRepository<T>{
     private ArrayList<T> Items;
+    public GenericMemoryRepo()
+    {
+        Items = new ArrayList<>();
+    }
+
     @Override
-    public void AddItem(T item) {
+    public void addItem(T item) {
         Items.add(item);
     }
 

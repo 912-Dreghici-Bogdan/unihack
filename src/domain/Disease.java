@@ -1,8 +1,15 @@
 package src.domain;
 
+import java.util.ArrayList;
+
 public class Disease implements Identifiable<String>{
     private String Name;
-    private Restrictions restrictions;
+    private ArrayList<Restrictions> restrictions;
+    public Disease(String Name)
+    {
+        this.Name = Name;
+        restrictions = new ArrayList<>();
+    }
 
     public String getName() {
         return Name;
@@ -12,12 +19,12 @@ public class Disease implements Identifiable<String>{
         Name = name;
     }
 
-    public Restrictions getRestrictions() {
+    public ArrayList<Restrictions> getRestrictions() {
         return restrictions;
     }
 
-    public void setRestrictions(Restrictions restrictions) {
-        this.restrictions = restrictions;
+    public void addRestrictions(Restrictions restrictions) {
+        this.restrictions.add(restrictions);
     }
 
     @Override

@@ -1,17 +1,16 @@
 package src.domain;
 
+import java.util.ArrayList;
+
 public class Product implements Identifiable<String>{
     private String Name;
-
-    public Ingredients getIngredients() {
+    private ArrayList<Ingredients> ingredients;
+    public ArrayList<Ingredients> getIngredients() {
         return ingredients;
     }
-
-    public void setIngredients(Ingredients ingredients) {
-        this.ingredients = ingredients;
+    public void addIngredients(Ingredients ingredients) {
+        this.ingredients.add(ingredients);
     }
-
-    private Ingredients ingredients;
     @Override
     public String getId() {
         return Name;
