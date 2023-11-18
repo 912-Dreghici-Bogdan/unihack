@@ -1,19 +1,23 @@
 package src.service;
+import src.Valditators.CredentialValidators;
+import src.Valditators.StringValidators;
 import src.domain.*;
 import src.repository.*;
+
+import java.util.ArrayList;
+
 public class service {
     private DiseaseRepo diseases;
     //private IngredientsRepo ingredients;
     private UserRepo users;
-    private ProductRepo products;
     private MedicamentationRepo medicamentationRepo;
-    public boolean checkProduct(int user_id, Product product)
+    public boolean checkProduct(int user_id, ArrayList<String> product_ingredients)
     {
         for(User user : users.getAllItems())
         {
             if(user.getId() == user_id)
             {
-                for(Ingredients ingredient : product.getIngredients())
+                for(String ingredient : product_ingredients)
                 {
                     if(!checkDiseases(user,ingredient))
                         return false;
@@ -25,27 +29,48 @@ public class service {
         }
         return true;
     }
-     public boolean checkMedicamentation(User user, Ingredients ingredient)
+     public boolean checkMedicamentation(User user, String ingredient)
      {
          for(Medicamentation med : user.getMedicamentation().getAllItems())
-             for(Restrictions restriction : med.getRestrictions())
-                 for(String harmful_ingredients : restriction.getHarmful_ingredients())
+             for(String harmful_ingredients : med.getHarmfulIngredients())
                  {
-                     if(ingredient.getId() == harmful_ingredients)
+                     StringValidators.StringMatching(ingredient,harmful_ingredients);
+                     if(ingredient.equalsIgnoreCase(harmful_ingredients))
                          return false;
                  }
          return true;
      }
-    public boolean checkDiseases(User user, Ingredients ingredient)
+    public boolean checkDiseases(User user, String ingredient)
     {
         for(Disease disease : user.getDisease().getAllItems())
-            for(Restrictions restriction : disease.getRestrictions())
+            for(String harmful_ingredients : disease.getHarmful_ingredients())
             {
-                for(String harmful_ingridients : restriction.getHarmful_ingredients())
-                    if (harmful_ingridients == ingredient.getId())
-                        return false;
+                StringValidators.StringMatching(ingredient,harmful_ingredients);
+                if (harmful_ingredients.equalsIgnoreCase(ingredient))
+                    return false;
             }
         return true;
+    }
+    private static String encrypt(String plainText, int shift)
+    {
+        StringBuilder encryptedText = new StringBuilder();
+        for(char character : plainText.toCharArray())
+        {
+
+            if(Character.isLetter(character))
+            {
+                char encryptedChar = (char) ('A' + (character - 'A' + shift) % 26);
+                encryptedText.append(encryptedChar);
+            }
+            else {
+                encryptedText.append(character);
+            }
+        }
+        return encryptedText.toString();
+    }
+    private static String decrypt(String encryptedText, int shift)
+    {
+        return encrypt(encryptedText,-shift);
     }
 
 }

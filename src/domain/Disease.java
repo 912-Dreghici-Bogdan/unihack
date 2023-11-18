@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Disease implements Identifiable<String>{
     private String Name;
-    private ArrayList<Restrictions> restrictions;
+    private ArrayList<String> harmful_ingredients;
     public Disease(String Name)
     {
         this.Name = Name;
-        restrictions = new ArrayList<>();
+        harmful_ingredients = new ArrayList<>();
     }
 
     public String getName() {
@@ -19,12 +19,12 @@ public class Disease implements Identifiable<String>{
         Name = name;
     }
 
-    public ArrayList<Restrictions> getRestrictions() {
-        return restrictions;
+    public ArrayList<String> getHarmful_ingredients() {
+        return harmful_ingredients;
     }
 
-    public void addRestrictions(Restrictions restrictions) {
-        this.restrictions.add(restrictions);
+    public void addRestrictions(String restrictions) {
+        this.harmful_ingredients.add(restrictions);
     }
 
     @Override

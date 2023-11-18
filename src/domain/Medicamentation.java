@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Medicamentation implements Identifiable<String>{
     private String Name;
-    private ArrayList<Restrictions> restrictions;
+    private ArrayList<String> harmful_ingredients;
 
-    public ArrayList<Restrictions> getRestrictions() {
-        return restrictions;
+    public ArrayList<String> getHarmfulIngredients() {
+        return harmful_ingredients;
     }
-    public void addRestrictions(Restrictions restrictions) {
-        this.restrictions.add(restrictions);
+    public void addHarmfulIngredient(String Harmful_ingredient) {
+        this.harmful_ingredients.add(Harmful_ingredient);
     }
 
     @Override
