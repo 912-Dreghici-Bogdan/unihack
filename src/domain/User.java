@@ -94,7 +94,7 @@ public class User implements Identifiable<Integer> {
         System.out.println("identification number:" + id);
         for(Disease disease : this.disease.getAllItems())
         {
-            System.out.println("diseas: " + disease.getId() + " with restrictions:");
+            System.out.println("diseas: " + disease.getName() + " with restrictions:");
             for(String harmful_ingredients : disease.getHarmful_ingredients())
             {
                     System.out.println("Ingredient : " + harmful_ingredients);
