@@ -17,6 +17,7 @@ public class main {
 //        diseases.addItem(glutens);
 //        user1.setDisease(diseases);
 //        user1.printuser();
+        System.out.println(getHealthConditionsForUser(1));
     }
         public static String[] getHealthConditionsForUser(int userId) {
             List<String> healthConditionsList = new ArrayList<>();

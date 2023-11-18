@@ -4,10 +4,11 @@ import java.sql.*;
 public class Database {
     public static void main(String[] args)
     {
-        String url = "";
+        String url = "jdbc:sqlserver://localhost:1433";
         String username = "";
         String password = "";
         try{
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection connection = DriverManager.getConnection(url);
             String sql = "input the query from the database which will be run";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -16,7 +17,7 @@ public class Database {
             {
                 String columnValue = resultSet.getString("column1");
                 String columnValue2 = resultSet.getString("column2");
-
+                System.out.println(columnValue + "  " + columnValue2);
                 //Afterwards save the data in the best way or process it directly
             }
             resultSet.close();
@@ -26,6 +27,8 @@ public class Database {
         catch (SQLException e)
         {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
 
     }
