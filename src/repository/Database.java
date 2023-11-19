@@ -5,10 +5,10 @@ public class Database {
     public static void main(String[] args)
     {
         String url = "jdbc:sqlserver://localhost:1433";
-        String username = "";
+        String username = "wasy";
         String password = "";
         try{
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Driver d = Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection connection = DriverManager.getConnection(url);
             String sql = "input the query from the database which will be run";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
